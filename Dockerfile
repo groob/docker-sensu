@@ -6,6 +6,7 @@ ENV SENSU_RABBITMQ_USER guest
 ENV SENSU_RABBITMQ_PASSWORD guest
 ENV SENSU_REDIS_HOST localhost
 ENV SENSU_API_PORT 4567
+ENV SENSU_ROLE server
 
 ADD http://repos.sensuapp.org/apt/pubkey.gpg /sensu_key.gpg
 RUN apt-key add sensu_key.gpg
@@ -15,6 +16,3 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ADD https://github.com/groob/sensu-config/releases/download/0.0.2/sensu-config.tar.gz /
 RUN tar -xvf /sensu-config.tar.gz
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/opt/sensu/bin/sensu-server", "-d", "/etc/sensu/conf.d"]
-
-EXPOSE 4567
