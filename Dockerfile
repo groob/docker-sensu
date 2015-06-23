@@ -16,3 +16,5 @@ ADD https://github.com/groob/sensu-config/releases/download/v0.0.1/sensu-config.
 RUN tar -zxvf /sensu-config.tar.gz
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/opt/sensu/bin/sensu-server", "-c", "config.json"]
+
+EXPOSE 4567
