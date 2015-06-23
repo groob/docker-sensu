@@ -13,7 +13,7 @@ RUN echo "deb     http://repos.sensuapp.org/apt sensu main" >> /etc/apt/sources.
 RUN apt-get update && apt-get install -y sensu
 COPY docker-entrypoint.sh /entrypoint.sh
 ADD https://github.com/groob/sensu-config/releases/download/0.0.2/sensu-config.tar.gz /
-RUN tar -zxvf /sensu-config.tar.gz
+RUN tar -xvf /sensu-config.tar.gz
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/opt/sensu/bin/sensu-server", "-d", "/etc/sensu/conf.d"]
 
